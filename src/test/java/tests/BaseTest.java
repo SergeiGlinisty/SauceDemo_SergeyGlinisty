@@ -28,9 +28,7 @@ public class BaseTest {
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        // ChromeOptions options = new ChromeOptions();
-        // options.addArguments("--headless");
-        // options.addArguments("--start-maximized");
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -38,7 +36,7 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown() {
-        // driver.quit();
+         driver.quit();
 
     }
 }

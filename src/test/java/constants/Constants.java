@@ -9,6 +9,7 @@ public class Constants {
 
     public static class ItemName {
         public static final String productsName = "Sauce Labs Bike Light";
+        public static final String productsPrice = "$9.99";
 
     }
 

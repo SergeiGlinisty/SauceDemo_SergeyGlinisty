@@ -29,7 +29,7 @@ public class CartTest extends BaseTest {
         loginPage.clickLoginButton();
         productsPage.clickAddToCartButton(productsName);
         productsPage.clickCartButton();
-        Assert.assertTrue(cartPage.getProductDescription());
+        Assert.assertTrue(cartPage.getProductDescriptionElement());
 
     }
 

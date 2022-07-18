@@ -18,8 +18,8 @@ public abstract class HomePage extends BasePage {
         super(driver);
     }
 
-    public boolean getProductDescription() {
-        //return products description text
+    public boolean getProductDescriptionElement() {
+
         return driver.findElement(productDescription).isDisplayed();
     }
 
@@ -43,16 +43,7 @@ public abstract class HomePage extends BasePage {
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
-    //it doesn't work !!!
 
-    // public void clickElementMenu(String elementMenuName) {
-    //     WebElement elementMenu = getElementMenuByName(elementMenuName);
-    //      elementMenu.findElement(linkMenu).click();
-    //  }
-
-    // private WebElement getElementMenuByName(String elementMenuName) {
-    //     return driver.findElement(By.xpath(String.format(menuLocator, elementMenuName)));
-    //  }
 
 }
 

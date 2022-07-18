@@ -11,8 +11,7 @@ public class ProductsPage extends HomePage {
     private final String productContainerLocator = "//div[@class = 'inventory_item_name' and text() = '%s']/ancestor::div[@class='inventory_item']";
     private final By productsPageHeader = By.cssSelector(".peek");
 
-    // private final By productDescription = By.cssSelector(".inventory_details_desc_container");
-    private final By productPrice = By.xpath("//div[contains(text(),'29.99')]");
+    private final By productPriceLink = By.cssSelector(".inventory_item_price");
     private String productsName;
 
     public ProductsPage(WebDriver driver) {
@@ -23,15 +22,14 @@ public class ProductsPage extends HomePage {
         return driver.findElement(productsPageHeader).isDisplayed();
     }
 
-    // public String getProductDescription(){
-    //return products description text
-    //   return driver.findElement(productDescription).getText();
-    //  }
 
-    public String getProductPrice() {
-        //return products price text
-        return driver.findElement(productPrice).getText();
+
+
+    public void getProductPrice(String productsPrice) {
+        WebElement productContainer = getProductContainerByNamePrice(productsPrice);
+        productContainer.findElement(productPriceLink).getText();
     }
+
 
     public void openItemByName(String productsName) {
         WebElement productContainer = getProductContainerByName(productsName);
@@ -48,4 +46,7 @@ public class ProductsPage extends HomePage {
         return driver.findElement(By.xpath(String.format(productContainerLocator, productsName)));
     }
 
+    private WebElement getProductContainerByNamePrice(String productsPrice) {
+        return driver.findElement(By.xpath(String.format(productContainerLocator, productsPrice)));
+    }
 }

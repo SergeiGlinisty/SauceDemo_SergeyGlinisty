@@ -29,7 +29,7 @@ public class CartTest extends BaseTest {
         loginPage.clickLoginButton();
         productsPage.clickAddToCartButton(productsName);
         productsPage.clickCartButton();
-        Assert.assertTrue(cartPage.getProductDescriptionElement());
+        Assert.assertTrue(cartPage.isProductDescriptionDisplayed());
 
     }
 
@@ -45,11 +45,13 @@ public class CartTest extends BaseTest {
     }
 
     @Test
-    public void twitterLinkWorks() {
+    public void goToTwitter() {
         loginPage.setUserName(userName);
         loginPage.setPassword(password);
         loginPage.clickLoginButton();
         cartPage.clickTwitterLink();
+        cartPage.getCurrentUrl();
         Assert.assertEquals(cartPage.getCurrentUrl(), urlPage);
+
     }
 }

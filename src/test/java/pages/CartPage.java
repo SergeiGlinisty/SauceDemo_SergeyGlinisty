@@ -2,38 +2,52 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends HomePage {
 
-    private final By cartPageHeader = By.cssSelector(".title");
-    private final By continueShoppingButton = By.cssSelector("#continue-shopping");
-    private final By checkoutButton = By.cssSelector("#checkout");
-    private final By removeButton = By.xpath("//button[@class='btn btn_secondary btn_small cart_button']");
-    private final By emptyCart = By.cssSelector(".removed_cart_item");
+    @FindBy(css=".title")
+
+    WebElement cartPageHeader;
+    @FindBy(css="#continue-shopping")
+
+    WebElement continueShoppingButton;
+    @FindBy(css="#checkout")
+
+    WebElement checkoutButton;
+    @FindBy(xpath="//button[@class='btn btn_secondary btn_small cart_button']")
+
+    WebElement removeButton;
+    @FindBy(css=".removed_cart_item")
+
+    WebElement emptyCart;
 
     public CartPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
     }
 
     public boolean isCartPageHeaderDisplayed() {
-        return driver.findElement(cartPageHeader).isDisplayed();
+        return cartPageHeader.isDisplayed();
     }
 
 
     public void clickContinueShoppingButton() {
-        driver.findElement(continueShoppingButton).click();
+        continueShoppingButton.click();
     }
 
     public void clickCheckoutButton() {
-        driver.findElement(checkoutButton).click();
+        checkoutButton.click();
     }
 
     public void clickRemoveButton() {
-        driver.findElement(removeButton).click();
+       removeButton.click();
     }
 
     public boolean cartIsEmpty() {
-        return driver.findElement(emptyCart).isDisplayed();
+        return emptyCart.isDisplayed();
 
     }
 }

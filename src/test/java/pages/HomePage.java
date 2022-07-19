@@ -2,50 +2,71 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
+import java.util.Set;
 
 public abstract class HomePage extends BasePage {
 
-    private final By cartButton = By.cssSelector(".shopping_cart_link");
+    @FindBy(css=".shopping_cart_link")
 
-    // private final String menuLocator = "//a[@class ='bm-item menu-item' and text()='Logout']/ancestor::div[@class='bm-menu']";
-    private final By linkMenu = By.cssSelector("#logout_sidebar_link");
-    private final By menuButton = By.cssSelector("#react-burger-menu-btn");
-    private final By productDescription = By.cssSelector(".inventory_item_desc");
+    WebElement cartButton;
 
-    private final By twitterLink = By.xpath("//a[text() = 'Twitter']");
+    @FindBy(css="#logout_sidebar_link")
+
+    WebElement linkMenu;
+    @FindBy(css="#react-burger-menu-btn")
+
+    WebElement menuButton;
+    @FindBy(css=".inventory_item_desc")
+
+    WebElement productDescription;
+
+    @FindBy(xpath="//a[text() = 'Twitter']")
+
+    WebElement twitterLink;
 
     public HomePage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
     }
 
-    public boolean getProductDescriptionElement() {
+    public boolean isProductDescriptionDisplayed() {
 
-        return driver.findElement(productDescription).isDisplayed();
+        return productDescription.isDisplayed();
     }
 
     public void clickCartButton() {
-        driver.findElement(cartButton).click();
+        cartButton.click();
     }
 
     public void clickMenuButton() {
-        driver.findElement(menuButton).click();
+        menuButton.click();
     }
 
     public void clickElementMenu() {
-        driver.findElement(linkMenu).click();
+        linkMenu.click();
     }
 
     public void clickTwitterLink() {
-        driver.findElement(twitterLink).click();
+        twitterLink.click();
 
     }
 
     public String getCurrentUrl() {
+        Set<String> allWindows = driver.getWindowHandles();
+        List<String> allWindowsList = allWindows.stream().toList();
+        driver.switchTo().window(allWindowsList.get(1));
         return driver.getCurrentUrl();
     }
 
-
 }
+
+
+
 
 
 

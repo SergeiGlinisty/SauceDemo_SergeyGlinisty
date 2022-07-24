@@ -16,6 +16,7 @@ public class ItemDetailsTest extends BaseTest {
 
 
     @BeforeClass
+
     public void initialise() {
         itemDetailsPage = new ItemDetailsPage(driver);
         loginPage = new LoginPage(driver);
@@ -23,7 +24,7 @@ public class ItemDetailsTest extends BaseTest {
         cartPage = new CartPage(driver);
     }
 
-    @Test
+    @Test(description = "checking return ProductsPage", enabled = true, groups = {"Regression"})
     public void returnToProductsPage() {
         loginPage.setUserName(userName);
         loginPage.setPassword(password);
@@ -34,18 +35,17 @@ public class ItemDetailsTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(description = "checking logOut ", enabled = true, groups = {"Smoke"})
     public void logOut() {
         loginPage.setUserName(userName);
         loginPage.setPassword(password);
         loginPage.clickLoginButton();
         productsPage.clickMenuButton();
         productsPage.clickElementMenu();
-        //  productsPage.clickElementMenu(elementMenuName);
         Assert.assertTrue(loginPage.loginButtonDisplayed());
     }
 
-    @Test
+    @Test(description = "checking transition to Cart", groups = {"Regression"})
     public void goToCart() {
         loginPage.setUserName(userName);
         loginPage.setPassword(password);

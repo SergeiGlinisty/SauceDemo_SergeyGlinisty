@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,18 +10,19 @@ public class CartPage extends HomePage {
     @FindBy(css=".title")
 
     WebElement cartPageHeader;
-    @FindBy(css="#continue-shopping")
+    @FindBy(css = "#continue-shopping")
 
     WebElement continueShoppingButton;
-    @FindBy(css="#checkout")
+    @FindBy(css = "#checkout")
 
-    WebElement checkoutButton;
-    @FindBy(xpath="//button[@class='btn btn_secondary btn_small cart_button']")
+    WebElement checkOutButton;
+    @FindBy(xpath = "//button[@class='btn btn_secondary btn_small cart_button']")
 
     WebElement removeButton;
     @FindBy(css=".removed_cart_item")
 
     WebElement emptyCart;
+
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -39,7 +39,7 @@ public class CartPage extends HomePage {
     }
 
     public void clickCheckoutButton() {
-        checkoutButton.click();
+        checkOutButton.click();
     }
 
     public void clickRemoveButton() {

@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,10 +55,17 @@ public abstract class HomePage extends BasePage {
 
     }
 
-    public String getCurrentUrl() {
+    public String getUrlOpenedPage() {
         Set<String> allWindows = driver.getWindowHandles();
         List<String> allWindowsList = allWindows.stream().toList();
         driver.switchTo().window(allWindowsList.get(1));
+        return driver.getCurrentUrl();
+    }
+
+    public String returnToPreviousPageAndGetUrl() {
+        Set<String> allWindows = driver.getWindowHandles();
+        List<String> allWindowsList = allWindows.stream().toList();
+        driver.switchTo().window(allWindowsList.get(0));
         return driver.getCurrentUrl();
     }
 

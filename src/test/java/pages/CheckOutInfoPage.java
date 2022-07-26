@@ -51,14 +51,7 @@ public class CheckOutInfoPage extends HomePage {
         clickContinueButton();
     }
 
-    public void negativeEnterCheckoutInfo() {
-        setFirstName("");
-        setLastName("");
-        setPostalCode("");
-        clickContinueButton();
-    }
-
-    public String getCheckoutErrorText() {
+     public String getCheckoutErrorText() {
         return checkoutErrorText.getText();
     }
 }

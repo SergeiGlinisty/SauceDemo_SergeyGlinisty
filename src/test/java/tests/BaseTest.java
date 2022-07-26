@@ -15,21 +15,23 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    LoginPage loginPage;
-    ProductsPage productsPage;
-    ItemDetailsPage itemDetailsPage;
-    CartPage cartPage;
-    CheckOutInfoPage checkOutInfoPage;
-    CheckOutOverviewPage checkOutOverviewPage;
 
-    @Parameters({"browser"})
+    protected LoginPage loginPage;
+    protected ProductsPage productsPage;
+    protected ItemDetailsPage itemDetailsPage;
+    protected CartPage cartPage;
+    protected CheckOutInfoPage checkOutInfoPage;
+    protected CheckOutOverviewPage checkOutOverviewPage;
+
+
     @BeforeClass(alwaysRun = true)
 
-    public void setUp(@Optional("chrome") String browserName, ITestContext testContext) throws Exception {
-        if (browserName.equals("chrome")) {
+    public void setUp(ITestContext testContext) throws Exception {
+        String browserName = System.getProperty("browser");
+        if (browserName.equals("Chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-        } else if (browserName.equals("edge")) {
+        } else if (browserName.equals("Edge")) {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         } else {
@@ -38,10 +40,18 @@ public class BaseTest {
         wait = new WebDriverWait(driver, 30);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-
+        loginPage = new LoginPage(driver);
+        productsPage = new ProductsPage(driver);
+        itemDetailsPage = new ItemDetailsPage(driver);
+        loginPage = new LoginPage(driver);
+        productsPage = new ProductsPage(driver);
+        cartPage = new CartPage(driver);
+        checkOutInfoPage = new CheckOutInfoPage(driver);
+        checkOutOverviewPage = new CheckOutOverviewPage(driver);
+        testContext.setAttribute("driver", driver);
     }
     @BeforeMethod (alwaysRun = true)
-    public void openSauseDemo() {
+    public void navigate() {
         driver.get("https://www.saucedemo.com");
     }
 

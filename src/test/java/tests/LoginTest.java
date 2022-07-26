@@ -24,16 +24,15 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "positive login test", enabled = true, groups = {"Smoke"})
     public void positiveLoginTest() {
-        System.out.println("start positiveLoginTest");
+
         loginPage.setUserName(userName);
-        System.out.println("enter userName");
+
         loginPage.setPassword(password);
-        System.out.println("enter password");
+
         loginPage.clickLoginButton();
-        System.out.println("click Login button");
+
         Assert.assertTrue(productsPage.isProductsPageHeaderDisplayed());
-        System.out.println("register and move to the ProductsPage");
-        System.out.println("end positiveLoginTest");
+
     }
 
     @Test(description = "negative login test", groups = {"Regression", "Negative"}, dataProvider = "loginDataProvider")

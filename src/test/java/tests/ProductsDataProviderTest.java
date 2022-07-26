@@ -25,16 +25,15 @@ public class ProductsDataProviderTest extends BaseTest {
 
     @Test(description = "checking products on ProductsPage", enabled = true, groups = {"Regression"}, dataProvider = "ProductsDataProvider")
     public void checkProductsInProductsPage(String productsName, String description, String price) {
-        System.out.println("start checkProductsInProductsPage test");
+
         loginPage.login(userName, password);
-        System.out.println("enter userName and password and click Login button ");
+
         Assert.assertTrue(productsPage.isProductPresentByName(productsName));
-        System.out.println("check the number of products on the ProductsPage");
+
         Assert.assertEquals(productsPage.getItemDescription(productsName), description);
-        System.out.println("check the description of the products on the ProductsPage");
+
         Assert.assertEquals(productsPage.getItemPrice(productsName), price);
-        System.out.println("check the price of the products on the ProductsPage");
-        System.out.println("end checkProductsInProductsPage test");
+
     }
 
     @DataProvider(name = "ProductsDataProvider")

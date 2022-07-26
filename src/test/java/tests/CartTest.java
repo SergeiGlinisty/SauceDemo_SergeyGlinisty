@@ -48,24 +48,27 @@ public class CartTest extends BaseTest {
     }
 
     @Test(description = "checking transition to website twitter", groups = {"Regression"})
-    public void goToTwitter() {
-        System.out.println("start goToTwitter test ");
+    public void goToTwitterTest() {
+
         loginPage.setUserName(userName);
-        System.out.println("enter userName");
+
         loginPage.setPassword(password);
-        System.out.println("enter password");
+
         loginPage.clickLoginButton();
-        System.out.println("click Login button");
+
         cartPage.clickTwitterLink();
-        System.out.println("click Twitter link");
+
         cartPage.getUrlOpenedPage();
-        System.out.println("get URL Twitter page");
+
         Assert.assertEquals(cartPage.getUrlOpenedPage(), urlOpenedPage);
-        System.out.println("check URL Twitter page");
+
         cartPage.returnToPreviousPageAndGetUrl();
-        System.out.println("return to LoginPage and get LoginPage Url");
+
         Assert.assertEquals(cartPage.returnToPreviousPageAndGetUrl(), urlCurrentPage);
-        System.out.println("check URL LoginPage");
-        System.out.println("end goToTwitter test ");
+
+    }
+    @Test
+    public void runTest() {
+        System.out.println(System.getProperty("testProp"));
     }
 }

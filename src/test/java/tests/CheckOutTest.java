@@ -41,7 +41,7 @@ public class CheckOutTest extends BaseTest {
         productsPage.clickAddToCartButton(productsName);
         productsPage.clickCartButton();
         cartPage.clickCheckoutButton();
-        checkOutInfoPage.negativeEnterCheckoutInfo();
+        checkOutInfoPage.enterCheckoutInfo("","","");
         Assert.assertEquals(checkOutInfoPage.getCheckoutErrorText(), CHECKOUT_ERROR_TEXT);
     }
 

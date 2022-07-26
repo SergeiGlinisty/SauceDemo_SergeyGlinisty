@@ -6,10 +6,7 @@ import org.testng.annotations.Test;
 
 public class NameAndCostItemInCartTest extends BaseTest {
 
-    @BeforeMethod
-    public void navigate() {
-        driver.get(" https://www.saucedemo.com");
-    }
+
 
     @Test
     public void nameAndCostItemInCart() {

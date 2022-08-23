@@ -9,6 +9,7 @@ pipeline {
     }
 
     parameters {
+        choice(name: 'BROWSER', choices: ['Cnrome', 'Edge', 'Yandex'], description: 'Pick browser')
         string(name: 'SUITE_NAME', defaultValue: 'SmokeTest.xml', description: 'Running tests')
      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
@@ -23,7 +24,7 @@ pipeline {
                //sh "mvn -Dmaven.test.failure.ignore=true clean test"
 
                 // To run Maven on a Windows agent, use
-                 bat "mvn -Dmaven.test.failure.ignore=true -DsuiteXmlFile=${params.SUITE_NAME} clean test"
+                 bat "mvn -Dmaven.test.failure.ignore=true -DsuiteXmlFile=${params.SUITE_NAME} -Dbrowser=${params.BROWSER} clean test"
             }
 
             post {

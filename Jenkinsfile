@@ -9,7 +9,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'suiteName', defaultValue: 'SmokeTest.xml', description: 'Running tests')
+        string(name: 'SUITE_NAME', defaultValue: 'SmokeTest.xml', description: 'Running tests')
      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
@@ -23,7 +23,7 @@ pipeline {
                //sh "mvn -Dmaven.test.failure.ignore=true clean test"
 
                 // To run Maven on a Windows agent, use
-                 bat "mvn -Dmaven.test.failure.ignore=true -DsuiteXmlFile=${params.suiteName} clean test"
+                 bat "mvn -Dmaven.test.failure.ignore=true -DsuiteXmlFile=${params.SUITE_NAME} clean test"
             }
 
             post {
